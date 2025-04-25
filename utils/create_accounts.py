@@ -16,11 +16,14 @@ def ask_password():
         pw = getpass.getpass(" Enter password (8-16 chars): ").strip()
         if PASSWORD.fullmatch(pw):
             return pw
-        print("Invalid password. Please try again.")
+        print(" Invalid password format.")
 
 def load_accounts():
-    with open("data/mock-account-tbl.json") as file:
-        return json.load(file)
+    try:
+        with open("data/mock-account-tbl.json") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
 
 def update_accounts(accounts):
     with open("data/mock-account-tbl.json", "w", encoding="utf-8") as file:
@@ -31,14 +34,14 @@ def main():
     print("\n[GUIDE]\n Hit <ENTER> after an empty username to end program.")
     print(" User level: 0 - Std user, 1 - Moderator, 2 - Admin, 3 - Super Admin")
     print(" Username: lowercase, starts with a-z then (alphanumeric and period).")
-    print(" Password: contains at least 1 lowercase, " \
-          "1 uppercase, 1 digit, and 1 special character (@$!%*?&)")
+    print(" Password: contains at least 1 lowercase, 1 uppercase, 1 digit, and 1 special character (@$!%*?&)")
     print(" Use the same username to overwrite account.")
 
     accounts = load_accounts()
+
     while True:
         print("\n[New Account]")
-        uname = input(" Username (1-15 chars): ")
+        uname = input(" Username (1-15 chars): ").strip()
         if not uname:
             break
         assert USERNAME.fullmatch(uname), "Invalid username."
@@ -49,12 +52,14 @@ def main():
         assert user_level in "0123", "Invalid user level."
         assert full_name, "Invalid name."
 
-        account = {}
-        account["id"] = str(uuid5(NAMESPACE_OID, uname))
-        account["fullName"] = full_name
-        account["hash"] = hashed
-        account["userLevel"] = int(user_level)
-        account["createdAt"] = int(datetime.now().timestamp())
+        account = {
+            "id": str(uuid5(NAMESPACE_OID, uname)),
+            "fullName": full_name,
+            "hash": hashed,
+            "userLevel": int(user_level),
+            "createdAt": int(datetime.now().timestamp())
+        }
+
         accounts[uname] = account
         update_accounts(accounts)
 

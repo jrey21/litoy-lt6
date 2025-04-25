@@ -1,0 +1,30 @@
+{
+    "test1": {
+        "id": "aa49dfe9-1377-50bb-ab9c-2dcb47ceefb0",
+        "fullName": "Jason",
+        "hash": "$2b$12$ftqQoz4qSU49PFJRvp/7rur6GFEuH7L8oxwQicNAzI7s6nXu5W0zK",
+        "userLevel": 0,
+        "createdAt": 1745577490
+    },
+    "test2": {
+        "id": "67963d37-3608-57d2-956c-93bbe828b334",
+        "fullName": "Anna",
+        "hash": "$2b$12$mGbsBhT4.xMRigtH3yVftOsC64ae9pWvGajRl1b9zesSPwP4AWCdq",
+        "userLevel": 1,
+        "createdAt": 1745577508
+    },
+    "test3": {
+        "id": "77820860-4a88-538e-9c98-b488e56a8fb9",
+        "fullName": "Coco",
+        "hash": "$2b$12$FK9XGwwl9xNOlTbppBsXfeDTe6vPG0wEvOWEpclQ/tBDhs9qUsPIi",
+        "userLevel": 3,
+        "createdAt": 1745577563
+    },
+    "test4": {
+        "id": "553a05e8-1ef7-5224-83d5-64af636ccd39",
+        "fullName": "Cody",
+        "hash": "$2b$12$RgippUULDGtw2Zt3QwpfquyAFNHUJVwA6E/JkWpalo3Bw8lhIWCY2",
+        "userLevel": 2,
+        "createdAt": 1745577586
+    }
+}
